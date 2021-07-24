@@ -1,3 +1,4 @@
+import 'package:countries_app/utils/quiz_type.dart';
 import 'package:countries_app/widgets/quiz_item.dart';
 import 'package:flutter/material.dart';
 
@@ -29,16 +30,19 @@ class QuizScreen extends StatelessWidget {
               child: ListView(
                 children: [
                   QuizItem(
+                    type:QuizType.Capitals,
                     title: "Capitals Quiz",
                     subtitle: "Find the capital of country",
                     overlayColor: Theme.of(context).primaryColor,
                   ),
                   QuizItem(
+                    type:QuizType.Flags,
                     title: "Flags Quiz",
                     subtitle: "Find the country matches given flag",
                     overlayColor: Color(0xFF662D),
                   ),
                   QuizItem(
+                    type:QuizType.Regions,
                     title: "Regions Quiz",
                     subtitle: "Find the country located in given region",
                     overlayColor: Color(0x005D9F),

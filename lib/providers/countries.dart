@@ -16,6 +16,19 @@ class Countries with ChangeNotifier {
     return [..._favoriteCountries];
   }
 
+  Future<void> getAllCountries() async{
+    List<Country> loadedCountries = [];
+    final url = Uri.parse("https://restcountries.eu/rest/v2/");
+    final response = await http.get(url);
+    List<dynamic> decodedResponse = json.decode(response.body);
+    decodedResponse.forEach((element) {
+      var country = Country.fromJson(element);
+      loadedCountries.add(country);
+    });
+    _countries = loadedCountries;
+    notifyListeners();
+  }
+
   List<Country> get countriesSortedByPopulation {
     var copiedCountries = [..._countries];
     copiedCountries.sort((country1, country2) {
@@ -47,25 +60,25 @@ class Countries with ChangeNotifier {
   }
 
   Future<void> searchCountriesByName(String name) async{
-    List<Country> loadedProducts = [];
+    List<Country> loadedCountries = [];
     final url = Uri.parse("https://restcountries.eu/rest/v2/name/$name");
     final response = await http.get(url);
     List<dynamic> decodedResponse = json.decode(response.body);
     decodedResponse.forEach((ctry) {
       var country = Country.fromJson(ctry);
-      loadedProducts.add(country);
+      loadedCountries.add(country);
     });
     final db = CountriesDatabase.instance;
     final favoriteCountries = await db.getCountries();
-    for(var i = 0;i<loadedProducts.length;i++){
+    for(var i = 0;i<loadedCountries.length;i++){
       for(var j = 0;j<favoriteCountries.length;j++){
-        if(favoriteCountries[j].flag == loadedProducts[i].flag){
-          loadedProducts[i].isFavorite = true;
+        if(favoriteCountries[j].flag == loadedCountries[i].flag){
+          loadedCountries[i].isFavorite = true;
           break;
         }
       }
     }
-    _countries = loadedProducts;
+    _countries = loadedCountries;
     notifyListeners();
   }
 

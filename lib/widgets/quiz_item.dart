@@ -1,12 +1,18 @@
 import 'package:countries_app/screens/question_screen.dart';
+import 'package:countries_app/utils/quiz_type.dart';
 import 'package:flutter/material.dart';
 
 class QuizItem extends StatelessWidget {
   final String title;
   final String subtitle;
   final Color overlayColor;
+  final QuizType type;
 
-  QuizItem({required this.title,required this.subtitle,required this.overlayColor});
+  QuizItem({required this.type,required this.title,required this.subtitle,required this.overlayColor});
+
+  void onQuizItemSelected(BuildContext context){
+    Navigator.of(context).pushNamed(QuestionScreen.routeName,arguments: type );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -137,9 +143,7 @@ class QuizItem extends StatelessWidget {
                 ),
                 SizedBox(height: 20,),
                 MaterialButton(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(QuestionScreen.routeName);
-                  },
+                  onPressed: ()=>onQuizItemSelected(context),
                   child: Text(
                     "PLAY",
                     style: TextStyle(color: Colors.white),
