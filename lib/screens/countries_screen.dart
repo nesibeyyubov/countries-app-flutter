@@ -3,6 +3,7 @@ import 'package:countries_app/providers/countries.dart';
 import 'package:countries_app/screens/country_details_screen.dart';
 import 'package:countries_app/utils/regions.dart';
 import 'package:countries_app/utils/sort_options.dart';
+import 'package:countries_app/widgets/countries_placeholder_loading.dart';
 import 'package:countries_app/widgets/country_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -83,8 +84,8 @@ class _CountriesScreenState extends State<CountriesScreen> {
   }
 
   void onCountrySelected(BuildContext context, Country country) {
-    Navigator.of(context)
-        .pushNamed(CountryDetailsScreen.routeName, arguments: country);
+    Navigator.of(context).pushNamed(CountryDetailsScreen.routeName,
+        arguments: {'country': country, 'fromFavorites': false});
   }
 
   void onSearchTextChanged(String text) {
@@ -204,16 +205,26 @@ class _CountriesScreenState extends State<CountriesScreen> {
                   child: Container(
                 margin: EdgeInsets.only(top: 10),
                 child: _isLoading
-                    ? Center(
-                        child: CircularProgressIndicator(
-                          color: Theme.of(context).primaryColor,
-                        ),
-                      )
-                    : ListView.builder(
-                        itemCount: countries.length,
-                        itemBuilder: (ctx, index) => CountryItem(
-                            () => onCountrySelected(context, countries[index]),
-                            countries[index])),
+                    ? SingleChildScrollView(
+                        child: CountriesPlaceholderLoading())
+                    : countriesData.countriesByRegionError != null
+                        ? Expanded(
+                            child: Center(
+                              child: Text(
+                                countriesData.countriesByRegionError!,
+                                style: TextStyle(
+                                  color: Colors.redAccent,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          )
+                        : ListView.builder(
+                            itemCount: countries.length,
+                            itemBuilder: (ctx, index) => CountryItem(
+                                () => onCountrySelected(
+                                    context, countries[index]),
+                                countries[index])),
               ))
             ],
           ),

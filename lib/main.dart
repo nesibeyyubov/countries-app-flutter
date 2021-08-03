@@ -7,6 +7,7 @@ import 'package:countries_app/screens/home_screen.dart';
 import 'package:countries_app/screens/question_screen.dart';
 import 'package:countries_app/screens/quiz_screen.dart';
 import 'package:countries_app/screens/search_screen.dart';
+import 'package:countries_app/widgets/countries_placeholder_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -49,6 +50,7 @@ class _MyAppState extends State<MyApp> {
         ),
         home: Scaffold(
           body: bottomNavigationScreens[_currentIndex],
+          // body: CountriesPlaceholderLoading(),
           bottomNavigationBar: BottomNavigationBar(
             selectedItemColor: Color.fromRGBO(7, 165, 129, 1),
             unselectedItemColor: Colors.grey,

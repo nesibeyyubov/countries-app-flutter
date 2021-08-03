@@ -7,6 +7,10 @@ import 'dart:convert';
 class Countries with ChangeNotifier {
   List<Country> _countries = [];
   List<Country> _favoriteCountries = [];
+  String? countriesByRegionError;
+  String? countriesBySearchError;
+  String? allCountriesError;
+
 
   List<Country> get countries {
     return [..._countries];
@@ -17,16 +21,23 @@ class Countries with ChangeNotifier {
   }
 
   Future<void> getAllCountries() async{
-    List<Country> loadedCountries = [];
-    final url = Uri.parse("https://restcountries.eu/rest/v2/");
-    final response = await http.get(url);
-    List<dynamic> decodedResponse = json.decode(response.body);
-    decodedResponse.forEach((element) {
-      var country = Country.fromJson(element);
-      loadedCountries.add(country);
-    });
-    _countries = loadedCountries;
-    notifyListeners();
+    try{
+      List<Country> loadedCountries = [];
+      final url = Uri.parse("https://restcountries.eu/rest/v2/");
+      final response = await http.get(url);
+      List<dynamic> decodedResponse = json.decode(response.body);
+      decodedResponse.forEach((element) {
+        var country = Country.fromJson(element);
+        loadedCountries.add(country);
+      });
+      _countries = loadedCountries;
+      allCountriesError = null;
+      notifyListeners();
+    }
+    catch(e){
+      allCountriesError = "Something went wrong\n please try again";
+      notifyListeners();
+    }
   }
 
   List<Country> get countriesSortedByPopulation {
@@ -60,26 +71,32 @@ class Countries with ChangeNotifier {
   }
 
   Future<void> searchCountriesByName(String name) async{
-    List<Country> loadedCountries = [];
-    final url = Uri.parse("https://restcountries.eu/rest/v2/name/$name");
-    final response = await http.get(url);
-    List<dynamic> decodedResponse = json.decode(response.body);
-    decodedResponse.forEach((ctry) {
-      var country = Country.fromJson(ctry);
-      loadedCountries.add(country);
-    });
-    final db = CountriesDatabase.instance;
-    final favoriteCountries = await db.getCountries();
-    for(var i = 0;i<loadedCountries.length;i++){
-      for(var j = 0;j<favoriteCountries.length;j++){
-        if(favoriteCountries[j].flag == loadedCountries[i].flag){
-          loadedCountries[i].isFavorite = true;
-          break;
+    try{
+      List<Country> loadedCountries = [];
+      final url = Uri.parse("https://restcountries.eu/rest/v2/name/$name");
+      final response = await http.get(url);
+      List<dynamic> decodedResponse = json.decode(response.body);
+      decodedResponse.forEach((ctry) {
+        var country = Country.fromJson(ctry);
+        loadedCountries.add(country);
+      });
+      final db = CountriesDatabase.instance;
+      final favoriteCountries = await db.getCountries();
+      for(var i = 0;i<loadedCountries.length;i++){
+        for(var j = 0;j<favoriteCountries.length;j++){
+          if(favoriteCountries[j].flag == loadedCountries[i].flag){
+            loadedCountries[i].isFavorite = true;
+            break;
+          }
         }
       }
+      _countries = loadedCountries;
+      countriesBySearchError = null;
+      notifyListeners();
+    }catch(e){
+      countriesBySearchError = "Something went wrong,/n please try again";
+      notifyListeners();
     }
-    _countries = loadedCountries;
-    notifyListeners();
   }
 
   Future<void> toggleFavoriteStatus(String flag) async {
@@ -127,10 +144,11 @@ class Countries with ChangeNotifier {
         }
       });
       _countries = loadedCountries;
+      countriesByRegionError = null;
       notifyListeners();
 
     } catch (exception) {
-      print(exception.toString());
+      countriesByRegionError = "Something went wrong,\nplease try again";
     }
   }
 }

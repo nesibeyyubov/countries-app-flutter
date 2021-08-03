@@ -10,6 +10,7 @@ import 'package:countries_app/widgets/quiz_finish_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class QuestionScreen extends StatefulWidget {
   static const routeName = "question-screen";
@@ -25,7 +26,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
   bool _quizStarted = false;
   int _currentQuestionIndex = 0;
   bool _questionAnswered = false;
-  int _leftSeconds = 10;
+  int _leftSeconds = 60;
   bool _quizFinished = false;
   Timer? quizTimer;
   int _currentAnswerCount = 0;
@@ -156,7 +157,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
   void onOptionsItemSelected(bool isRightQuestion) {
     setState(() {
       _questionAnswered = true;
-      if(isRightQuestion){
+      if (isRightQuestion) {
         _currentAnswerCount = _currentAnswerCount + 1;
       }
     });
@@ -165,12 +166,13 @@ class _QuestionScreenState extends State<QuestionScreen> {
   @override
   Widget build(BuildContext context) {
     final quizType = ModalRoute.of(context)?.settings.arguments as QuizType;
-    final countries = Provider.of<Countries>(context).countries;
+    final countriesData = Provider.of<Countries>(context);
+    final countries = countriesData.countries;
 
     return Scaffold(
       body: SafeArea(
         child: _quizFinished
-            ? QuizFinishWidget(_currentAnswerCount)
+            ? QuizFinishWidget(_currentAnswerCount, quizType)
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
@@ -217,34 +219,44 @@ class _QuestionScreenState extends State<QuestionScreen> {
                                   child: CircularProgressIndicator(
                                     color: Color(0xFFFEC107),
                                   ))
-                              : !_quizStarted
+                              : countriesData.allCountriesError != null
                                   ? Container(
-                                      margin: EdgeInsets.only(top: 50),
+                                      margin: EdgeInsets.only(top: 40),
                                       child: Text(
-                                        "Click start to start the game",
+                                        countriesData.allCountriesError!,
                                         style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20),
+                                          color: Colors.white,
+                                        ),
+                                        textAlign: TextAlign.center,
                                       ))
-                                  : quizType == QuizType.Flags
+                                  : !_quizStarted
                                       ? Container(
-                                          margin: EdgeInsets.only(top: 30),
-                                          child: SvgPicture.network(
-                                            _currentQuestion!.flag!,
-                                            width: 150,
-                                            height: 90,
-                                            fit: BoxFit.cover,
-                                          ))
-                                      : Container(
                                           margin: EdgeInsets.only(top: 50),
                                           child: Text(
-                                            _currentQuestion!.text!,
+                                            "Click start to start the game",
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 20),
-                                          )),
+                                          ))
+                                      : quizType == QuizType.Flags
+                                          ? Container(
+                                              margin: EdgeInsets.only(top: 30),
+                                              child: SvgPicture.network(
+                                                _currentQuestion!.flag!,
+                                                width: 150,
+                                                height: 90,
+                                                fit: BoxFit.cover,
+                                              ))
+                                          : Container(
+                                              margin: EdgeInsets.only(top: 50),
+                                              child: Text(
+                                                _currentQuestion!.text!,
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 20),
+                                              )),
                         ]),
                       )),
                   Container(
@@ -294,7 +306,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                           primary: Theme.of(context).primaryColor,
                           shape: StadiumBorder(),
                           padding: EdgeInsets.all(10)),
-                      onPressed: _isLoading
+                      onPressed: _isLoading || countriesData.allCountriesError != null
                           ? null
                           : () => makeQuestion(countries, quizType),
                       child: Text(

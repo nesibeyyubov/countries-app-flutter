@@ -50,11 +50,13 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   void onSearchTextChanged(String text) {
-    if(text.isNotEmpty){
+    if (text.isNotEmpty) {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<Countries>(context,listen: false).searchCountriesByName(text).then((value){
+      Provider.of<Countries>(context, listen: false)
+          .searchCountriesByName(text)
+          .then((value) {
         setState(() {
           _isLoading = false;
         });
@@ -73,7 +75,6 @@ class _SearchScreenState extends State<SearchScreen> {
     } else {
       countries = countriesData.countries;
     }
-
 
     return Scaffold(
       body: SafeArea(
@@ -146,13 +147,19 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 10,),
-              Text("Search Results",style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-                fontSize: 20
-              ),),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "Search Results",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 20),
+              ),
+              SizedBox(
+                height: 10,
+              ),
               Expanded(
                   child: Container(
                 margin: EdgeInsets.only(top: 10),
@@ -162,11 +169,21 @@ class _SearchScreenState extends State<SearchScreen> {
                           color: Theme.of(context).primaryColor,
                         ),
                       )
-                    : ListView.builder(
-                        itemCount: countries.length,
-                        itemBuilder: (ctx, index) => CountryItem(
-                            () => onCountrySelected(context, countries[index]),
-                            countries[index])),
+                    : countriesData.countriesBySearchError != null
+                        ? Expanded(
+                            child: Center(
+                              child: Text(
+                                "No search result",
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          )
+                        : ListView.builder(
+                            itemCount: countries.length,
+                            itemBuilder: (ctx, index) => CountryItem(
+                                () => onCountrySelected(
+                                    context, countries[index]),
+                                countries[index])),
               ))
             ],
           ),

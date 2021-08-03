@@ -16,8 +16,9 @@ class CountryDetailsScreen extends StatelessWidget {
     final countriesData = Provider.of<Countries>(context);
     List<Country> allCountries = countriesData.countries;
 
-
-    Country country =ModalRoute.of(context)?.settings.arguments as Country;
+    final routes = ModalRoute.of(context)?.settings.arguments as Map<String,dynamic>;
+    Country country = routes['country'] as Country;
+    bool fromFavorites = routes['fromFavorites'] as bool;
     bool isCountryFavorite = countriesData.isCountryFavorite(country.flag);
 
     List<Country> borders = allCountries
@@ -84,9 +85,12 @@ class CountryDetailsScreen extends StatelessWidget {
                             countriesData.toggleFavoriteStatus(country.flag);
                           },
                           child: Icon(
-                            isCountryFavorite ? Icons.favorite :  Icons.favorite_border,
+                            isCountryFavorite
+                                ? Icons.favorite
+                                : Icons.favorite_border,
                             size: 26,
-                            color: isCountryFavorite ? Colors.red : Colors.white,
+                            color:
+                                isCountryFavorite ? Colors.red : Colors.white,
                           ),
                         ))
                   ],
@@ -192,7 +196,7 @@ class CountryDetailsScreen extends StatelessWidget {
                     SizedBox(
                       height: 15,
                     ),
-                    Container(
+                    if(!fromFavorites) Container(
                       margin: EdgeInsets.only(left: 10),
                       child: Text(
                         "Borders",
@@ -202,15 +206,22 @@ class CountryDetailsScreen extends StatelessWidget {
                             fontSize: 20),
                       ),
                     ),
-                    Container(
-                      height: 100,
-                      width: double.infinity,
-                      padding: EdgeInsets.only(left: 10, top: 15),
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: borders.map((border) => BorderItem(border.name,border.flag)).toList(),
-                      ),
-                    ),
+                    if(!fromFavorites) borders.isEmpty
+                        ? Padding(
+                            padding: EdgeInsets.only(top: 5, left: 10),
+                            child: Text("No borders"))
+                        : Container(
+                            height: 100,
+                            width: double.infinity,
+                            padding: EdgeInsets.only(left: 10, top: 15),
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: borders
+                                  .map((border) =>
+                                      BorderItem(border.name, border.flag))
+                                  .toList(),
+                            ),
+                          ),
                     SizedBox(
                       height: 30,
                     ),
@@ -223,7 +234,9 @@ class CountryDetailsScreen extends StatelessWidget {
                         color: Theme.of(context).primaryColor,
                         child: InkWell(
                           onTap: () {
-                            Navigator.pushNamed(context, CountryMapScreen.routeName,arguments: country.latlng);
+                            Navigator.pushNamed(
+                                context, CountryMapScreen.routeName,
+                                arguments: country.latlng);
                           },
                           splashColor: Colors.black12,
                           child: Row(

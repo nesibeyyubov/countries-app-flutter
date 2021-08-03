@@ -14,7 +14,7 @@ class FavoriteCountryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Navigator.of(context).pushNamed(CountryDetailsScreen.routeName,arguments: country);
+        Navigator.of(context).pushNamed(CountryDetailsScreen.routeName,arguments: {'country':country,'fromFavorites':true});
       },
       child: Container(
         margin: EdgeInsets.only(right: 15),

@@ -7,8 +7,9 @@ class QuizItem extends StatelessWidget {
   final String subtitle;
   final Color overlayColor;
   final QuizType type;
+  final int bestScore;
 
-  QuizItem({required this.type,required this.title,required this.subtitle,required this.overlayColor});
+  QuizItem({required this.type,required this.title,required this.subtitle,required this.overlayColor,required this.bestScore});
 
   void onQuizItemSelected(BuildContext context){
     Navigator.of(context).pushNamed(QuestionScreen.routeName,arguments: type );
@@ -110,7 +111,7 @@ class QuizItem extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          "15",
+                          bestScore.toString(),
                           style: TextStyle(
                               fontSize: 32, color: Colors.black),
                         ),

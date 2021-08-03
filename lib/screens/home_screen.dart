@@ -89,11 +89,11 @@ class RegionItem extends StatelessWidget {
   List<Color> get regionColors {
     switch (region) {
       case Region.Oceania:
-        return [Color(0xff2fceff), Color(0xff0093be)];
+        return [Color(0xff2fceff), Color(0xff0084a9)];
       case Region.America:
         return [Color(0xff3622ff), Color(0xff1800fd)];
       case Region.Africa:
-        return [Color(0xffff8659), Color(0xffff662d)];
+        return [Color(0xffff8659), Color(0xfffc5a22)];
       case Region.Asia:
         return [Color(0xff017bd2), Color(0xff004879)];
       case Region.Europe:
@@ -105,37 +105,43 @@ class RegionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => onRegionSelected(region, regionColors, context),
-      splashColor: Colors.white,
-      child: Container(
-        margin: EdgeInsets.only(bottom: 15),
-        decoration: BoxDecoration(
-          boxShadow: region == null
-              ? null
-              : [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 20,
-                  )
-                ],
-          borderRadius: BorderRadius.circular(10),
-          gradient: region == null
-              ? null
-              : LinearGradient(
-                  colors: regionColors,
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight),
-        ),
-        padding: EdgeInsets.all(15),
-        width: 170,
-        height: 120,
-        child: Text(
-          regionName,
-          style: TextStyle(
-              fontSize: 25,
-              color: region == null ? Colors.black : Colors.white,
-              fontWeight: FontWeight.bold),
+    return Container(
+      margin: EdgeInsets.only(bottom: 15),
+      width: 170,
+      height: 120,
+      child: Material(
+        child: Ink(
+          decoration: BoxDecoration(
+            boxShadow: region == null
+                ? null
+                : [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 20,
+                    )
+                  ],
+            borderRadius: BorderRadius.circular(10),
+            gradient: region == null
+                ? null
+                : LinearGradient(
+                    colors: regionColors,
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight),
+          ),
+          child: InkWell(
+            onTap: () => onRegionSelected(region, regionColors, context),
+            splashColor: Colors.black12,
+            child: Container(
+              padding: EdgeInsets.all(15),
+              child: Text(
+                regionName,
+                style: TextStyle(
+                    fontSize: 25,
+                    color: region == null ? Colors.black : Colors.white,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
         ),
       ),
     );
