@@ -1,16 +1,45 @@
-# countries_app
+:star: An educational countries app shows information about countries, you can also play quizzes.
 
-A new Flutter application.
+:exclamation: You can download apk file from <a href="https://www.mediafire.com/file/isimkd2998tgizu/countries-app.apk/file">here</a>
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+<h3>:fire: What i used</h3>
+<ul>
+  <li>Flutter</li>
+  <li>Provider package for state management</li>
+  <li>SQLite</li>
+  <li>Google MAP</li>
+</ul>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<h3>:camera: Screenshots from app</h3>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<table>
+  <tr>
+     <td>Home Screen</td>
+     <td>Quiz Screen</td>
+     <td>Favorites Screen</td>
+     
+  </tr>
+  <tr>
+    <td valign="top"><img src="https://i.ibb.co/GWFzxS0/home.png"></td>
+    <td valign="top"><img src="https://i.ibb.co/7WXqrjW/quiz.png"></td>
+    <td valign="top"><img src="https://i.ibb.co/dDPyq91/favorites.png"></td>
+  </tr>
+ 
+  <tr>
+    <td>Countries Screen</td>
+    <td>Details Screen</td>
+    <td>Map Screen</td>
+  </tr>
+  
+  <tr>
+    <td valign="top"><img src="https://i.ibb.co/8jyvBRW/countries.png"></td>
+    <td valign="top"><img src="https://i.ibb.co/F8FJCHx/detail.png"></td>
+    <td valign="top"><img src="https://i.ibb.co/B3szbbL/map.png"></td>
+  </tr>
+ 
+ 
+ </table>
+
+
