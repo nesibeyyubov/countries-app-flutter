@@ -72,7 +72,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                     SizedBox(
                       height: 50,
                     ),
-                    Text(
+                    const Text(
                       "Your Favorites",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,

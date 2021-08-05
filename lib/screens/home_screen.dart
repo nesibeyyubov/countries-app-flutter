@@ -132,7 +132,7 @@ class RegionItem extends StatelessWidget {
             onTap: () => onRegionSelected(region, regionColors, context),
             splashColor: Colors.black12,
             child: Container(
-              padding: EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15),
               child: Text(
                 regionName,
                 style: TextStyle(

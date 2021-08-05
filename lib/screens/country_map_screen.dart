@@ -67,7 +67,7 @@ class _CountryMapScreenState extends State<CountryMapScreen> {
                         color: mapType == MapType.normal
                             ? Theme.of(context).primaryColor
                             : Colors.white),
-                    label: Text("Normal"),
+                    label: const Text("Normal"),
                     onSelected: (_) => onMapTypeChanged(MapType.normal),
                   ),
                   FilterChip(
@@ -75,12 +75,12 @@ class _CountryMapScreenState extends State<CountryMapScreen> {
                         ? Colors.white
                         : Theme.of(context).primaryColor,
                     shape: StadiumBorder(
-                        side: BorderSide(color: Colors.white, width: 1)),
+                        side: const BorderSide(color: Colors.white, width: 1)),
                     labelStyle: TextStyle(
                         color: mapType == MapType.satellite
                             ? Theme.of(context).primaryColor
                             : Colors.white),
-                    label: Text("Satellite"),
+                    label: const Text("Satellite"),
                     onSelected: (_) => onMapTypeChanged(MapType.satellite),
                   ),
                   FilterChip(
@@ -88,12 +88,12 @@ class _CountryMapScreenState extends State<CountryMapScreen> {
                         ? Colors.white
                         : Theme.of(context).primaryColor,
                     shape: StadiumBorder(
-                        side: BorderSide(color: Colors.white, width: 1)),
+                        side: const BorderSide(color: Colors.white, width: 1)),
                     labelStyle: TextStyle(
                         color: mapType == MapType.terrain
                             ? Theme.of(context).primaryColor
                             : Colors.white),
-                    label: Text("Terrain"),
+                    label: const Text("Terrain"),
                     onSelected: (_) => onMapTypeChanged(MapType.terrain),
                   ),
                   FilterChip(
@@ -101,12 +101,12 @@ class _CountryMapScreenState extends State<CountryMapScreen> {
                         ? Colors.white
                         : Theme.of(context).primaryColor,
                     shape: StadiumBorder(
-                        side: BorderSide(color: Colors.white, width: 1)),
+                        side: const BorderSide(color: Colors.white, width: 1)),
                     labelStyle: TextStyle(
                         color: mapType == MapType.hybrid
                             ? Theme.of(context).primaryColor
                             : Colors.white),
-                    label: Text("Hybrid"),
+                    label: const Text("Hybrid"),
                     onSelected: (_) => onMapTypeChanged(MapType.hybrid),
                   ),
                 ],

@@ -12,7 +12,7 @@ class BorderItem extends StatelessWidget {
     return Container(
       width: 80,
       height: 95,
-      margin: EdgeInsets.only(right: 15),
+      margin: const EdgeInsets.only(right: 15),
       decoration: BoxDecoration(color: Color.fromRGBO(239, 239, 239, 1.0)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +35,7 @@ class BorderItem extends StatelessWidget {
             name,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ],
       ),

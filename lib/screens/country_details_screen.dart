@@ -97,7 +97,7 @@ class CountryDetailsScreen extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(15),
+                padding: const EdgeInsets.all(15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -121,7 +121,7 @@ class CountryDetailsScreen extends StatelessWidget {
                     SizedBox(
                       height: 15,
                     ),
-                    Text(
+                    const Text(
                       "Population and area",
                       style: TextStyle(
                           color: Colors.black,
@@ -198,7 +198,7 @@ class CountryDetailsScreen extends StatelessWidget {
                     ),
                     if(!fromFavorites) Container(
                       margin: EdgeInsets.only(left: 10),
-                      child: Text(
+                      child: const Text(
                         "Borders",
                         style: TextStyle(
                             color: Colors.black,
@@ -209,7 +209,7 @@ class CountryDetailsScreen extends StatelessWidget {
                     if(!fromFavorites) borders.isEmpty
                         ? Padding(
                             padding: EdgeInsets.only(top: 5, left: 10),
-                            child: Text("No borders"))
+                            child: const Text("No borders"))
                         : Container(
                             height: 100,
                             width: double.infinity,
@@ -242,8 +242,8 @@ class CountryDetailsScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.location_on, color: Colors.white),
-                              Text(
+                              const Icon(Icons.location_on, color: Colors.white),
+                              const Text(
                                 "SHOW IN MAP",
                                 style: TextStyle(
                                     color: Colors.white,

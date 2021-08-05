@@ -36,7 +36,7 @@ class QuizAnswerItem extends StatelessWidget {
     return GestureDetector(
       onTap: () => onOptionsItemSelected(isRightQuestion),
       child: Container(
-        margin: EdgeInsets.only(bottom: 20),
+        margin: const EdgeInsets.only(bottom: 20),
         width: double.infinity,
         height: 40,
         decoration: BoxDecoration(
@@ -44,16 +44,16 @@ class QuizAnswerItem extends StatelessWidget {
                 ? isRightQuestion
                     ? Theme.of(context).primaryColor
                     : Colors.red
-                : Color(0xFFE4F0EE),
+                : const Color(0xFFE4F0EE),
             borderRadius: BorderRadius.circular(20)),
         child: Row(
           children: [
             Container(
-              margin: EdgeInsets.only(left: 6),
+              margin: const EdgeInsets.only(left: 6),
               width: 35,
               height: 35,
               decoration: BoxDecoration(
-                  color: Color(0xFFFEC107),
+                  color: const Color(0xFFFEC107),
                   borderRadius: BorderRadius.circular(17.5)),
               child: Center(
                 child: Text(

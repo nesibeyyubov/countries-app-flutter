@@ -18,7 +18,7 @@ class QuizItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 30),
+      margin: const EdgeInsets.only(bottom: 30),
       decoration: BoxDecoration(
           border: Border.all(color: Colors.black12)
       ),
@@ -67,7 +67,7 @@ class QuizItem extends StatelessWidget {
                       children: [
                         Text(
                           title,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                               color: Colors.white),
@@ -77,7 +77,7 @@ class QuizItem extends StatelessWidget {
                         ),
                         Text(
                           subtitle,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, color: Colors.white),
                         ),
                       ],
@@ -86,7 +86,7 @@ class QuizItem extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 15),
+            padding: const EdgeInsets.only(top: 15),
             child: Column(
               children: [
                 Row(
@@ -95,12 +95,12 @@ class QuizItem extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        Text(
+                        const Text(
                           "240+",
                           style: TextStyle(
                               fontSize: 32, color: Colors.black),
                         ),
-                        Text(
+                        const Text(
                           "Question count",
                           style: TextStyle(
                               fontSize: 14,
@@ -115,7 +115,7 @@ class QuizItem extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 32, color: Colors.black),
                         ),
-                        Text(
+                        const Text(
                           "Your best score",
                           style: TextStyle(
                               fontSize: 14,
@@ -130,12 +130,12 @@ class QuizItem extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Text(
+                    const Text(
                       "60 seconds",
                       style: TextStyle(
                           fontSize: 16, color: Colors.black),
                     ),
-                    Text(
+                    const Text(
                       "duration",
                       style: TextStyle(
                           fontSize: 14, color: Colors.black54),

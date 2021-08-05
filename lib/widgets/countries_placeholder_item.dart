@@ -6,7 +6,7 @@ class CountriesPlaceholderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 80,
-      margin: EdgeInsets.only(bottom: 25),
+      margin: const EdgeInsets.only(bottom: 25),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
       ),
@@ -39,7 +39,7 @@ class CountriesPlaceholderItem extends StatelessWidget {
                 ),
                 Spacer(),
                 Container(
-                  margin: EdgeInsets.only(bottom: 3),
+                  margin: const EdgeInsets.only(bottom: 3),
                   child: Row(
                     children: [
                       Row(

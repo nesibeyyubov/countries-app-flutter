@@ -54,7 +54,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  Text(
+                  const Text(
                     "Quiz",
                     style: TextStyle(
                         fontSize: 26,
@@ -79,14 +79,14 @@ class _QuizScreenState extends State<QuizScreen> {
                           type: QuizType.Flags,
                           title: "Flags Quiz",
                           subtitle: "Find the country matches given flag",
-                          overlayColor: Color(0xFF662D),
+                          overlayColor: const Color(0xFF662D),
                         ),
                         QuizItem(
                           bestScore: _regionsBestScore,
                           type: QuizType.Regions,
                           title: "Regions Quiz",
                           subtitle: "Find the country located in given region",
-                          overlayColor: Color(0x005D9F),
+                          overlayColor: const Color(0x005D9F),
                         ),
                       ],
                     ),

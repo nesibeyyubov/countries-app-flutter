@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
           body: bottomNavigationScreens[_currentIndex],
           // body: CountriesPlaceholderLoading(),
           bottomNavigationBar: BottomNavigationBar(
-            selectedItemColor: Color.fromRGBO(7, 165, 129, 1),
+            selectedItemColor: const Color.fromRGBO(7, 165, 129, 1),
             unselectedItemColor: Colors.grey,
             type: BottomNavigationBarType.fixed,
             showUnselectedLabels: false,
@@ -60,13 +60,13 @@ class _MyAppState extends State<MyApp> {
             onTap: onBottomNavItemSelect,
             items: [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
+                  icon: const  Icon(Icons.home),
                   label: "Home",
                   backgroundColor: Colors.white),
-              BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
-              BottomNavigationBarItem(icon: Icon(Icons.quiz), label: "Quiz"),
+              BottomNavigationBarItem(icon: const Icon(Icons.search), label: "Search"),
+              BottomNavigationBarItem(icon: const Icon(Icons.quiz), label: "Quiz"),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.favorite), label: "Favorites"),
+                  icon: const Icon(Icons.favorite), label: "Favorites"),
             ],
           ),
         ),

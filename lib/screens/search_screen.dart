@@ -79,7 +79,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -94,9 +94,9 @@ class _SearchScreenState extends State<SearchScreen> {
                         textInputAction: TextInputAction.search,
                         onChanged: onSearchTextChanged,
                         decoration: InputDecoration(
-                            fillColor: Color.fromRGBO(238, 238, 238, 1.0),
+                            fillColor: const Color.fromRGBO(238, 238, 238, 1.0),
                             filled: true,
-                            suffixIcon: Icon(Icons.search),
+                            suffixIcon: const Icon(Icons.search),
                             border: OutlineInputBorder(
                               borderSide: BorderSide.none,
                               borderRadius: BorderRadius.circular(5),
@@ -114,7 +114,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 children: [
                   Expanded(child: Text("SORT BY: ")),
                   FilterChip(
-                    label: Text("Population"),
+                    label: const Text("Population"),
                     backgroundColor: sortedBy == SortOptions.Population
                         ? Theme.of(context).primaryColor
                         : Colors.transparent,
@@ -142,7 +142,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         color: sortedBy == SortOptions.Area
                             ? Colors.white
                             : Theme.of(context).primaryColor),
-                    label: Text("Area"),
+                    label: const Text("Area"),
                     onSelected: (_) => onSortItemSelected(SortOptions.Area),
                   ),
                 ],
@@ -150,7 +150,7 @@ class _SearchScreenState extends State<SearchScreen> {
               SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                 "Search Results",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -162,7 +162,7 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
               Expanded(
                   child: Container(
-                margin: EdgeInsets.only(top: 10),
+                margin: const EdgeInsets.only(top: 10),
                 child: _isLoading
                     ? Center(
                         child: CircularProgressIndicator(
@@ -172,7 +172,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     : countriesData.countriesBySearchError != null
                         ? Expanded(
                             child: Center(
-                              child: Text(
+                              child: const Text(
                                 "No search result",
                                 textAlign: TextAlign.center,
                               ),

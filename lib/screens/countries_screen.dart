@@ -119,7 +119,7 @@ class _CountriesScreenState extends State<CountriesScreen> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Column(
             children: [
               Container(
@@ -132,9 +132,9 @@ class _CountriesScreenState extends State<CountriesScreen> {
                         textInputAction: TextInputAction.search,
                         onChanged: onSearchTextChanged,
                         decoration: InputDecoration(
-                            fillColor: Color.fromRGBO(238, 238, 238, 1.0),
+                            fillColor: const Color.fromRGBO(238, 238, 238, 1.0),
                             filled: true,
-                            suffixIcon: Icon(Icons.search),
+                            suffixIcon: const Icon(Icons.search),
                             border: OutlineInputBorder(
                               borderSide: BorderSide.none,
                               borderRadius: BorderRadius.circular(5),
@@ -143,8 +143,8 @@ class _CountriesScreenState extends State<CountriesScreen> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 10),
-                      padding: EdgeInsets.symmetric(horizontal: 25),
+                      margin: const EdgeInsets.only(left: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
                       decoration: BoxDecoration(
                           gradient: LinearGradient(colors: regionColors),
                           borderRadius: BorderRadius.circular(10)),
@@ -166,9 +166,9 @@ class _CountriesScreenState extends State<CountriesScreen> {
               ),
               Row(
                 children: [
-                  Expanded(child: Text("SORT BY: ")),
+                  Expanded(child: const Text("SORT BY: ")),
                   FilterChip(
-                    label: Text("Population"),
+                    label: const Text("Population"),
                     backgroundColor: sortedBy == SortOptions.Population
                         ? Theme.of(context).primaryColor
                         : Colors.transparent,
@@ -196,14 +196,14 @@ class _CountriesScreenState extends State<CountriesScreen> {
                         color: sortedBy == SortOptions.Area
                             ? Colors.white
                             : Theme.of(context).primaryColor),
-                    label: Text("Area"),
+                    label: const Text("Area"),
                     onSelected: (_) => onSortItemSelected(SortOptions.Area),
                   ),
                 ],
               ),
               Expanded(
                   child: Container(
-                margin: EdgeInsets.only(top: 10),
+                margin: const EdgeInsets.only(top: 10),
                 child: _isLoading
                     ? SingleChildScrollView(
                         child: CountriesPlaceholderLoading())

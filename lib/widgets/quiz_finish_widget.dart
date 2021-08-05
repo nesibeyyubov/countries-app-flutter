@@ -52,7 +52,7 @@ class _QuizFinishWidgetState extends State<QuizFinishWidget> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
+          const Text(
             "Quiz is finished !",
             style: TextStyle(
                 color: Colors.black87,

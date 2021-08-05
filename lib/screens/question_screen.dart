@@ -180,7 +180,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       width: double.infinity,
                       height: 200,
                       decoration: BoxDecoration(
-                          gradient: LinearGradient(
+                          gradient: const LinearGradient(
                               colors: [
                             Color.fromRGBO(7, 162, 128, 1),
                             Color.fromRGBO(6, 118, 93, 1),
@@ -204,7 +204,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                                   onTap: () {
                                     Navigator.of(context).pop();
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     "X",
                                     style: TextStyle(
                                         color: Colors.white,
@@ -215,13 +215,13 @@ class _QuestionScreenState extends State<QuestionScreen> {
                           ),
                           _isLoading
                               ? Container(
-                                  margin: EdgeInsets.only(top: 40),
+                                  margin: const EdgeInsets.only(top: 40),
                                   child: CircularProgressIndicator(
-                                    color: Color(0xFFFEC107),
+                                    color: const Color(0xFFFEC107),
                                   ))
                               : countriesData.allCountriesError != null
                                   ? Container(
-                                      margin: EdgeInsets.only(top: 40),
+                                      margin: const EdgeInsets.only(top: 40),
                                       child: Text(
                                         countriesData.allCountriesError!,
                                         style: TextStyle(
@@ -232,7 +232,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                                   : !_quizStarted
                                       ? Container(
                                           margin: EdgeInsets.only(top: 50),
-                                          child: Text(
+                                          child: const Text(
                                             "Click start to start the game",
                                             style: TextStyle(
                                                 color: Colors.white,
@@ -241,7 +241,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                                           ))
                                       : quizType == QuizType.Flags
                                           ? Container(
-                                              margin: EdgeInsets.only(top: 30),
+                                              margin: const EdgeInsets.only(top: 30),
                                               child: SvgPicture.network(
                                                 _currentQuestion!.flag!,
                                                 width: 150,
@@ -249,7 +249,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                                                 fit: BoxFit.cover,
                                               ))
                                           : Container(
-                                              margin: EdgeInsets.only(top: 50),
+                                              margin: const EdgeInsets.only(top: 50),
                                               child: Text(
                                                 _currentQuestion!.text!,
                                                 style: TextStyle(
@@ -261,12 +261,12 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       )),
                   Container(
                     transform: Matrix4.translationValues(0, -30, 0),
-                    margin: EdgeInsets.only(right: 15, bottom: 30),
+                    margin: const EdgeInsets.only(right: 15, bottom: 30),
                     alignment: Alignment.centerRight,
                     width: 60,
                     height: 60,
                     decoration: BoxDecoration(
-                        color: Color(0xFFFEC107),
+                        color: const Color(0xFFFEC107),
                         borderRadius: BorderRadius.circular(30)),
                     child: Center(
                       child: Text(
@@ -282,7 +282,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                     Container(
                       transform: Matrix4.translationValues(0, -40, 0),
                       child: Padding(
-                        padding: EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(15),
                         child: Column(
                           children: List.generate(
                               _currentQuestion!.options.length,
@@ -299,7 +299,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                     ),
                   Spacer(),
                   Container(
-                    padding: EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(15),
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(

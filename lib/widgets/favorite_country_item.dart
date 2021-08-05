@@ -17,7 +17,7 @@ class FavoriteCountryItem extends StatelessWidget {
         Navigator.of(context).pushNamed(CountryDetailsScreen.routeName,arguments: {'country':country,'fromFavorites':true});
       },
       child: Container(
-        margin: EdgeInsets.only(right: 15),
+        margin: const EdgeInsets.only(right: 15),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(15),
           child: Container(
@@ -76,7 +76,7 @@ class FavoriteCountryItem extends StatelessWidget {
                           onTap: () {
                             Provider.of<Countries>(context,listen: false).removeFavoriteCountry(country.flag);
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.favorite,
                             color: Colors.red,
                           ),
@@ -104,7 +104,7 @@ class FavoriteCountryItem extends StatelessWidget {
                                 country.population.toString(),
                                 style: TextStyle(
                                     fontSize: 12,
-                                    color: Color.fromRGBO(229, 229, 229, 1)),
+                                    color: const Color.fromRGBO(229, 229, 229, 1)),
                               )
                             ],
                           ),
@@ -123,7 +123,7 @@ class FavoriteCountryItem extends StatelessWidget {
                                 country.area.toString(),
                                 style: TextStyle(
                                   fontSize: 12,
-                                    color: Color.fromRGBO(229, 229, 229, 1)),
+                                    color: const Color.fromRGBO(229, 229, 229, 1)),
                               )
                             ],
                           )

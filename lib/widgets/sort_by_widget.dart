@@ -38,9 +38,9 @@ class _SortByState extends State<SortBy> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(child: Text("SORT BY: ")),
+        Expanded(child: const Text("SORT BY: ")),
         FilterChip(
-          label: Text("Population"),
+          label: const Text("Population"),
           backgroundColor: sortedBy == SortOptions.Population
               ? Theme.of(context).primaryColor
               : Colors.transparent,
@@ -67,7 +67,7 @@ class _SortByState extends State<SortBy> {
               color: sortedBy == SortOptions.Area
                   ? Colors.white
                   : Theme.of(context).primaryColor),
-          label: Text("Area"),
+          label: const Text("Area"),
           onSelected: (_) => onSortItemSelected(SortOptions.Area),
         ),
       ],

@@ -54,11 +54,11 @@ class _CountryItemState extends State<CountryItem>
         // color: Color.fromRGBO(238, 238, 238, 1.0)
       ),
       child: Material(
-        color: Color.fromRGBO(238, 238, 238, 1.0),
+        color: const Color.fromRGBO(238, 238, 238, 1.0),
         child: InkWell(
           onTap: () => widget.onCountryClicked(),
           child: Padding(
-            padding: EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -90,11 +90,11 @@ class _CountryItemState extends State<CountryItem>
                     ),
                     Text(
                       widget.country.capital,
-                      style: TextStyle(fontSize: 14, color: Colors.black54),
+                      style: const TextStyle(fontSize: 14, color: Colors.black54),
                     ),
                     Spacer(),
                     Container(
-                      margin: EdgeInsets.only(bottom: 3),
+                      margin: const EdgeInsets.only(bottom: 3),
                       child: Row(
                         children: [
                           Row(

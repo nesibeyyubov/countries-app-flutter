@@ -6,8 +6,8 @@ class CountriesPlaceholderLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-        baseColor: Color(0xFFCDCDCD),
-        highlightColor: Color(0xFFEEEEEE),
+        baseColor: const Color(0xFFCDCDCD),
+        highlightColor: const Color(0xFFEEEEEE),
         child: Column(
           children: [
             CountriesPlaceholderItem(),
